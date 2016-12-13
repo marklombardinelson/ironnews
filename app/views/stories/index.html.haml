@@ -1,0 +1,16 @@
+.table-responsive
+  %table.table.table-striped.table-bordered.table-hover
+
+    %tbody
+      - @stories.each_with_index do |story, index|
+        %tr
+          %td
+            = index + 1
+            \.
+          %td
+            = link_to story.title, story.link
+            %p
+              by
+              = link_to story.email, "mailto: #{story.email}"
+              = distance_of_time_in_words_to_now(story.created_at)
+              ago
